@@ -1,2 +1,7 @@
 h1 Articles#index
 p Find me in app/views/articles/index.html.slim
+
+#content
+  ul class = "articles"
+    - @articles.each do |a|
+      li = a.title

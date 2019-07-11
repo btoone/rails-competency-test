@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Is Spider-Man A Villian Or Hero?
+  content: MyText
+  category: MyString
+
+two:
+  title: JJJ Exposes Peter Parker As Spider-Man 
+  content: MyText
+  category: MyString
