@@ -14,4 +14,10 @@ class GuestStoriesTest < ApplicationSystemTestCase
      assert_selector "ul.articles"
      assert_content @article.title
    end
+
+   test "I can see the homepage with first 3 articles from each category" do
+     visit root_url
+     assert_selector "ul.articles"
+     assert_content @article.title
+   end
 end
