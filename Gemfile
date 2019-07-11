@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Enable .env configuration
 gem "dotenv-rails", group: [:development, :test]
+
+# Use slim as template engine
+gem "slim-rails"
