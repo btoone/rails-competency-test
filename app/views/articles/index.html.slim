@@ -2,6 +2,22 @@ h1 Articles#index
 p Find me in app/views/articles/index.html.slim
 
 #content
-  ul class = "articles"
-    - @articles.each do |a|
-      li = a.title
+  .article-category id="category-superhero-0"
+   ul class = "articles"
+    - @superhero_articles.each do |a|
+     li = a.title
+    
+  .article-category id="category-local-1"
+   ul class = "articles"
+    - @local_articles.each do |a|
+     li = a.title
+
+  .article-category id="category-health-2"
+   ul class = "articles"
+    - @health_articles.each do |a|
+     li = a.title
+
+  .article-category id="category-money-3"
+   ul class = "articles"
+    - @money_articles.each do |a|
+     li = a.title

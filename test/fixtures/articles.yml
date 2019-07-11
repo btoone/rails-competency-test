@@ -1,27 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+article_superhero_1:
   title: Is Spider-Man A Villian Or Hero?
   content: MyText
   category: superhero
 
-two:
+article_superhero_2:
   title: JJJ Exposes Peter Parker As Spider-Man 
   content: MyText
   category: superhero
 
-superhero_3:
+article_superhero_3:
   title: Where Will Spider-Man Go Now?
   content: MyText
   category: superhero
 
-superhero_4:
+article_superhero_4:
   title: Who Is Peter Parker Really?
   content: MyText
   category: superhero
 
 <% Article.categories.each do |category, id| %>
-<% 5.times do |n| %>
+<% 3.times do |n| %>
 article_<%= [category, n].join('_') %>:
   title: title-<%= [category, n].join('-') %>
   content: MyText
