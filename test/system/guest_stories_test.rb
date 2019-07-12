@@ -36,4 +36,35 @@ class GuestStoriesTest < ApplicationSystemTestCase
     assert_equal new_user_registration_path, page.current_path
     assert_content "Sign up"
 	end
+
+  test "I can signup" do
+    sign_me_up
+    assert_content "Welcome! You have signed up successfully."
+  end
+
+  test "I can login" do
+    sign_me_up
+    log_me_out
+    log_me_in
+    assert_content "Signed in successfully."
+  end
+
+  def sign_me_up
+    visit new_user_registration_path
+    fill_in "Email", with: "mj@example.com"
+    fill_in "Password", with: 'password'
+    fill_in "Password confirmation", with: 'password'
+    click_button "Sign up"
+  end
+
+  def log_me_in
+    visit new_user_session_path
+    fill_in "Email", with: "mj@example.com"
+    fill_in "Password", with: 'password'
+    click_button "Log in"
+  end
+
+  def log_me_out
+    click_on "Logout"
+  end
 end
