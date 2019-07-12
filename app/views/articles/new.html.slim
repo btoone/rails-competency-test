@@ -1,6 +1,11 @@
 h2 "Create an article"
 
 = form_with model: @article, local: true do |f|
+
+ == render 'errors'
+
+ = f.hidden_field :user_id
+
  .field
    = f.label :title
    br

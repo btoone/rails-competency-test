@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :list]
+
   def index
     @categories = Article.categories
     @articles = Article.all.group_by(&:category)
@@ -15,7 +16,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = current_user.articles.build
   end
 
   def create
@@ -23,11 +24,11 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-				format.html { redirect_to article_url(@article), notice: 'Article was created successfully' }
-				format.json { render :show, status: :created, location: @article }
+        format.html { redirect_to article_url(@article), notice: 'Article was created successfully' }
+        format.json { render :show, status: :created, location: @article }
       else
-				format.html { render :new }
-				format.json { render json: @article.errors, status: :unprocessable_entity }
+        format.html { render :new }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,6 +45,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :category)
+    params.require(:article).permit(:title, :content, :category, :user_id)
   end
 end

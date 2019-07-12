@@ -28,3 +28,15 @@ article_<%= [category, n].join('_') %>:
   category: <%= id %>
 <% end %>
 <% end %>
+
+editor:
+  title: "Editorial: What we think of Spider-Man"
+  content: MyText
+  category: superhero
+  user: bob
+
+reporter:
+  title: How to side-hustle making Avenger merch
+  content: MyText
+  category: money
+  user: alice
