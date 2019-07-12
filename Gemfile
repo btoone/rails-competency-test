@@ -68,3 +68,6 @@ gem "slim-rails"
 
 # User authentication
 gem "devise"
+
+# User authorization
+gem "petergate"
