@@ -1,3 +1,15 @@
+## Setup Instructions
+
+1. Run `bin/setup`
+2. Edit the newly created `.env` file for database credentials
+
+## Tests
+
+1. Run tests with `bin/rails test`
+2. Run system tests with `bin/rails test:system`
+
+---
+
 <img src="https://cdn.shopify.com/s/files/1/0163/4078/t/74/assets/logo.png?3926" width="161" height="60"/>
 
 # Rails Competency Test - Simple News Application
