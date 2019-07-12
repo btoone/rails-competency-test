@@ -30,7 +30,7 @@ article_<%= [category, n].join('_') %>:
 <% end %>
 
 editor:
-  title: "Editorial: What we think of Spider-Man"
+  title: "Editorial What we think of Spider-Man"
   content: MyText
   category: superhero
   user: bob
@@ -40,3 +40,9 @@ reporter:
   content: MyText
   category: money
   user: alice
+
+editor2:
+  title: "Charlies Editorial"
+  content: MyText
+  category: superhero
+  user: charlie

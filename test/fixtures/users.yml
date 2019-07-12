@@ -9,3 +9,8 @@ bob:
   name: MyString
   email: user2@email.com
   roles: editor
+
+charlie:
+  name: MyString
+  email: user3@email.com
+  roles: editor

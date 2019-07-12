@@ -34,6 +34,9 @@ class EditorStoriesTest < ActionDispatch::IntegrationTest
   end
 
   test "can edit ONLY articles that I created" do
-    skip
+    article2 = articles :editor2
+
+    get edit_article_path(article2)
+    assert_match /denied/i, flash.notice
   end
 end

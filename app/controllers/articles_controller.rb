@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :list]
-  before_action :check_ability, only: :destroy
+  before_action :check_ability, only: [:edit, :destroy]
 
   access all: [:index, :list], editor: :all, user: {except: [:new, :create, :destroy]}
 
@@ -22,6 +22,9 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build
   end
 
+  def edit
+  end
+
   def create
     @article = Article.new(article_params)
 
@@ -31,6 +34,18 @@ class ArticlesController < ApplicationController
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @article.update(article_params)
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.json { render :show, status: :ok, location: @article }
+      else
+        format.html { render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end

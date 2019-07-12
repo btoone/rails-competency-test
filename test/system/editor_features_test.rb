@@ -64,9 +64,8 @@ class EditorFeaturesTest < ApplicationSystemTestCase
     assert_equal count - 1, Article.count 
   end
 
-  test 'I can delete ONLY articles that I created' do
+  test "I can delete ONLY articles that I created" do
     count = Article.count
-    article1 = articles :editor
     article2 = articles :reporter
 
     # Try to delete an article created by another user
@@ -76,8 +75,24 @@ class EditorFeaturesTest < ApplicationSystemTestCase
     assert_no_selector "a", text: "Delete"
   end
 
+  test "I can edit an article" do
+    article1 = articles :editor
+    visit list_articles_url
+    click_on article1.title
+
+    assert_selector "a", text: "Edit"
+    click_on "Edit"
+    click_button "Update Article"
+
+    assert_text "Article was successfully updated"
+  end
+
   test "I can edit ONLY articles that I created" do
-    skip
+    article2 = articles :editor2
+    visit list_articles_url
+    click_on article2.title
+
+    assert_no_selector "a", text: "Edit"
   end
 
   def delete_an_article(article)
