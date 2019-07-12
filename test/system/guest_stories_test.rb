@@ -27,4 +27,13 @@ class GuestStoriesTest < ApplicationSystemTestCase
       assert_selector "li", maximum: 3
     end
   end
+
+  test "I am sent to the signup page when I try to view an article show page" do
+    visit articles_url
+    click_on @article.title
+    assert_no_content @article.content
+    
+    assert_equal new_user_registration_path, page.current_path
+    assert_content "Sign up"
+	end
 end
