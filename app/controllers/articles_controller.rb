@@ -1,6 +1,11 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :list]
   def index
+    @categories = Article.categories
+    @articles = Article.all.group_by(&:category)
+  end
+
+  def list
     @categories = Article.categories
     @articles = Article.all.group_by(&:category)
   end

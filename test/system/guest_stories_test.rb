@@ -49,6 +49,13 @@ class GuestStoriesTest < ApplicationSystemTestCase
     assert_content "Signed in successfully."
   end
 
+  test "I can view all the articles" do
+    count = Article.count
+    visit root_url
+    click_on "All Articles"
+    assert_selector "li", count: count
+  end
+
   def sign_me_up
     visit new_user_registration_path
     fill_in "Email", with: "mj@example.com"
