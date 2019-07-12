@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :list]
+  before_action :check_ability, only: :destroy
+
+  access all: [:index, :list], editor: :all, user: {except: [:new, :create, :destroy]}
 
   def index
     @categories = Article.categories
@@ -12,7 +16,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
   end
 
   def new
@@ -34,7 +37,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: 'Article was deleted successfully.' }
@@ -44,7 +46,22 @@ class ArticlesController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
   def article_params
     params.require(:article).permit(:title, :content, :category, :user_id)
+  end
+
+  def check_ability
+    if current_user.has_roles?(:admin, :editor)
+      if current_user.has_roles?(:admin)
+        # can continue
+      elsif current_user != @article.user
+        forbidden!
+      end
+    end
   end
 end

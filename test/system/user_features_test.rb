@@ -12,6 +12,7 @@ class UserFeaturesTest < ApplicationSystemTestCase
 
   test "I can see article index page" do
     visit articles_url
+    assert_selector "ul.articles"
   end
 
   test "I can see a list of articles" do

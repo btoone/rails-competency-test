@@ -3,7 +3,9 @@
 alice:
   name: MyString
   email: user1@email.com
+  roles: guest
 
 bob:
   name: MyString
   email: user2@email.com
+  roles: editor
