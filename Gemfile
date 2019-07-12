@@ -63,3 +63,6 @@ gem "pry-rails", group: [:development, :test]
 
 # Use slim as template engine
 gem "slim-rails"
+
+# User authentication
+gem "devise"
