@@ -1,8 +1,11 @@
 require "application_system_test_case"
 
 class UserFeaturesTest < ApplicationSystemTestCase
+	include Devise::Test::IntegrationHelpers
   def setup
     # login as user
+    sign_in users(:alice)
+
     @article = articles :article_health_0
     @article2 = articles :article_superhero_2
   end

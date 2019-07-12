@@ -1,8 +1,11 @@
 require "application_system_test_case"
 
 class EditorFeaturesTest < ApplicationSystemTestCase
+	include Devise::Test::IntegrationHelpers
   def setup
     # login as editor
+    sign_in users(:bob)
+
     @article = articles :article_health_0
     @article2 = articles :article_superhero_2
   end
