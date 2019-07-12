@@ -1,23 +1,6 @@
-h1 Articles#index
-p Find me in app/views/articles/index.html.slim
-
 #content
-  .article-category id="category-superhero-0"
+ - @categories.each do |category, id|
+  .category id="#{[category, id].join('-')}"
    ul class = "articles"
-    - @superhero_articles.each do |a|
-     li = a.title
-    
-  .article-category id="category-local-1"
-   ul class = "articles"
-    - @local_articles.each do |a|
-     li = a.title
-
-  .article-category id="category-health-2"
-   ul class = "articles"
-    - @health_articles.each do |a|
-     li = a.title
-
-  .article-category id="category-money-3"
-   ul class = "articles"
-    - @money_articles.each do |a|
+    - @articles[category].first(3).each do |a|
      li = a.title

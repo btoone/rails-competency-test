@@ -22,8 +22,8 @@ class GuestStoriesTest < ApplicationSystemTestCase
    test "I can see the homepage with first 3 articles from each category" do
      visit root_url
 
-     assert_selector ".article-category"
-     within("div#category-health-2") do
+     assert_selector ".category"
+     within("div#health-2") do
        assert_content @article.title
        assert_no_content @article2.title
        assert_selector "li", maximum: 3
