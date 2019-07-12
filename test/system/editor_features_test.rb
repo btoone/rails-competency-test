@@ -52,18 +52,21 @@ class EditorFeaturesTest < ApplicationSystemTestCase
     assert_text "Article was created successfully"
   end
 
-  test 'I can delete ONLY articles that I created' do
+  test "I can delete an article" do
     count = Article.count
 
-    visit articles_url
-    click_on @article.title
-    page.accept_confirm do
-      click_on "Delete", match: :first
-    end
+    delete_an_article(@article)
 
     assert_text "Article was deleted successfully"
     assert_equal articles_path, page.current_path
-
     assert_equal count - 1, Article.count 
+  end
+
+  def delete_an_article(article)
+    visit list_articles_url
+    click_on article.title
+    page.accept_confirm do
+      click_on "Delete", match: :first
+    end
   end
 end
