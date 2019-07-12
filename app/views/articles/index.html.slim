@@ -4,3 +4,5 @@
    ul class = "articles"
     - @articles[category].first(3).each do |a|
      li = link_to a.title, article_path(a)
+
+ li = link_to "New Article", new_article_path
