@@ -3,4 +3,4 @@
   .category id="#{[category, id].join('-')}"
    ul class = "articles"
     - @articles[category].first(3).each do |a|
-     li = a.title
+     li = link_to a.title, article_path(a)
